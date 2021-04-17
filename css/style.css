@@ -98,12 +98,6 @@ body {
 .on {
 	animation: on 300ms forwards;
 }
-@keyframes jumpLight {
-	0% {top: 70px;}
-	30% {top: 20px;}
-	70% {top: 20px;}
-	100% {top: 70px;}
-}
 @keyframes on {
 	0% {opacity: 0;}
 	100% {opacity: .5;}
