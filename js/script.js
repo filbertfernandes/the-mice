@@ -30,7 +30,7 @@ const light = document.getElementById('light');
 			light.style.opacity = '.5';
 			setTimeout(function() {
 				light.style.opacity = '0';
-			}, 2000)
+			}, 1500)
 		}
 	}
 
@@ -79,7 +79,6 @@ const light = document.getElementById('light');
 // ubah background di waktu tertentu
 	let time1 = Math.floor(Math.random() *10000) +8000;
 	let time2 = Math.floor(Math.random() *20000) +8000;
-	console.log(time1, time2);
 
 	// 1. background #game dan #character
 	setInterval(function() {
