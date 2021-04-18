@@ -86,21 +86,11 @@ body {
 /* light */
 #light {
 	opacity: 0;
-	width: 420px;
-	height: 218px;
+	width: 360px;
+	height: 215px;
 	position: absolute;
 	top: 0px;
-	left: 50px;
-}
-.jumpLight {
-	animation: jumpLight 500ms;
-}
-.on {
-	animation: on 300ms forwards;
-}
-@keyframes on {
-	0% {opacity: 0;}
-	100% {opacity: .5;}
+	left: 80px;
 }
 
 /* choose character */

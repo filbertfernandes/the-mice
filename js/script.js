@@ -23,17 +23,14 @@ const light = document.getElementById('light');
 	    }
 	}
 
-	// 3. lamp
-	window.addEventListener('keydown', checkKeyPressOn, false);
+	// 3. light
+	window.addEventListener('keyup', checkKeyPressOn, false);
 	function checkKeyPressOn(key) {
 		if( key.keyCode == '17' ) {
-			light.classList.add('on');
-		}
-	}
-	window.addEventListener('keyup', checkKeyPressOff, false);
-	function checkKeyPressOff(key) {
-		if( key.keyCode == '17' ) {
-			light.classList.remove('on');
+			light.style.opacity = '.5';
+			setTimeout(function() {
+				light.style.opacity = '0';
+			}, 2000)
 		}
 	}
 
