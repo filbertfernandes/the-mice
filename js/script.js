@@ -56,17 +56,18 @@ const light = document.getElementById('light');
 		},100)
 
 
-// chech dead
+// check dead
 	let checkDead = setInterval(function() {
 	let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
 	let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
 	if( blockLeft < 40 && blockLeft > -20 && characterTop >= 90 ) {
-		block.style.animation = "none";
+		block.classList.remove('start');
 		block.style.left = `${blockLeft}px`;
 		deadSfx();
 		let tryAgain = confirm("GAME OVER!\n   Try again?");
 		if( tryAgain == true ) {
-			block.style.animation = "block .8s infinite linear";
+			block.classList.add('start');
+			block.style.left = '450px';
 			if( parseInt(highscore.innerHTML) <= scoreNumb ) {
 				highscore.innerHTML = `${scoreNumb-1}`;
 			}
