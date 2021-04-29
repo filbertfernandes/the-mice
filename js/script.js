@@ -34,6 +34,7 @@ const light = document.getElementById('light');
 		}
 	}
 
+
 // mute
 	let muteButton = document.querySelector('.muteButton');
 	let mute = 'no';
@@ -46,6 +47,7 @@ const light = document.getElementById('light');
 			muteButton.style.textDecorationLine = 'none';
 		}
 	})
+
 
 // score system
 	let score = document.getElementById("score");
@@ -74,7 +76,6 @@ const light = document.getElementById('light');
 			scoreNumb = 0;
 		}
 	}
-},10)
 
 
 // ubah background di waktu tertentu
