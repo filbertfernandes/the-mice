@@ -76,7 +76,8 @@ const light = document.getElementById('light');
 			scoreNumb = 0;
 		}
 	}
-
+},10)
+	
 
 // ubah background di waktu tertentu
 	let time1 = Math.floor(Math.random() *10000) +8000;
