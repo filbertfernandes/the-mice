@@ -1,73 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" onclick="jump()">
-<head>
-	<meta charset="utf-8">
-	<title>The Running Mice</title>
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-	<h1 class="title">The Running Mice</h1>
-	<p class="control">
-		Press "Ctrl" to turn on the light <br>
-		Press "Space" to start / pause
-	</p>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-	<div id="game">
-		<div id="character"></div>
-		<img src="img/light.png" id="light">
-		<div id="block"></div>
-		<div id="score">0</div>
-		<div class="highscore">Highscore: <span>0</span></div>
-	</div>
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/style.css">
 
-	<div class="chooseCharacter">
-		<h2>Choose Your Character</h2>
-		<button class="muteButton">SOUND</button>
-		<div class="char-suits">
-			<div class="char-suit">char01</div>
-			<div class="char-suit">char02</div>
-			<div class="char-suit">char03</div>
-			<div class="char-suit">char04</div>
-			<div class="char-suit">char05</div>
-			<div class="char-suit">char06</div>
-			<div class="char-suit">char07</div>
-			<div class="char-suit">char08</div>
-			<div class="char-suit">char09</div>
-			<div class="char-suit">char10</div>
-			<div class="char-suit">char11</div>
-			<div class="char-suit">char12</div>
-			<div class="char-suit">char13</div>
-			<div class="char-suit">char14</div>
-			<div class="char-suit">char15</div>
-			<div class="char-suit">char16</div>
-			<div class="char-suit">char17</div>
-			<div class="char-suit">char18</div>
-			<div class="char-suit">char19</div>
-			<div class="char-suit">char20</div>
-			<div class="char-suit">char21</div>
-			<div class="char-suit">char22</div>
-			<div class="char-suit">char23</div>
-			<div class="char-suit">char24</div>
-			<div class="char-suit">char25</div>
-			<div class="char-suit">char26</div>
-			<div class="char-suit">char27</div>
-			<div class="char-suit">char28</div>
-			<div class="char-suit">char29</div>
-			<div class="char-suit">char30</div>
-			<div class="char-suit">char31</div>
-			<div class="char-suit">char32</div>
-			<div class="char-suit">char33</div>
-		</div>
-		<div class="preview"></div>
-	</div>
+    <title>The Running Mice</title>
+  </head>
+  <body>
+
+<!-- title -->
+<div class="container text-center mt-3">
+  <div class="row">
+    <div class="col-md">
+      <h1>The Running Mice</h1>
+    </div>
+  </div>
+</div>
+<!-- end title -->
+
+<!-- game -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="game">
+        <div id="character"></div>
+        <img src="img/light.png" id="light">
+        <div id="block"></div>
+        <div id="score">0</div>
+        <div class="highscore">Highscore: <span>0</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end game -->
+
+<!-- description & control -->
+<div class="container mt-4 mb-4">
+  <div class="row justify-content-center text-center">
+
+    <div class="col-lg-4">
+        <h5 class="control-h5">Control</h5>
+        <p>Press arrow key up or right click to jump <br>Press ctrl to turn on the light <br>Press space to start or pause</p>     
+    </div>
+
+    <div class="col-lg-4">
+      <button class="btn-dark muteButton">SOUND</button>
+      <button class="btn-dark startButton">START</button>
+    </div>
+
+  </div>
+</div>
+<!-- end description & control -->
+    
+<!-- choose character -->
+<div class="container text-dark">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="font-weight-bold text-center">Choose Your Character</h4>
+          <div class="char-suits">
+            <div class="char-suit">char01</div>
+            <div class="char-suit">char02</div>
+            <div class="char-suit">char03</div>
+            <div class="char-suit">char04</div>
+            <div class="char-suit">char05</div>
+            <div class="char-suit">char06</div>
+            <div class="char-suit">char07</div>
+            <div class="char-suit">char08</div>
+            <div class="char-suit">char09</div>
+            <div class="char-suit">char10</div>
+            <div class="char-suit">char11</div>
+            <div class="char-suit">char12</div>
+            <div class="char-suit">char13</div>
+            <div class="char-suit">char14</div>
+            <div class="char-suit">char15</div>
+            <div class="char-suit">char16</div>
+            <div class="char-suit">char17</div>
+            <div class="char-suit">char18</div>
+            <div class="char-suit">char19</div>
+            <div class="char-suit">char20</div>
+            <div class="char-suit">char21</div>
+            <div class="char-suit">char22</div>
+            <div class="char-suit">char23</div>
+            <div class="char-suit">char24</div>
+            <div class="char-suit">char25</div>
+            <div class="char-suit">char26</div>
+            <div class="char-suit">char27</div>
+            <div class="char-suit">char28</div>
+            <div class="char-suit">char29</div>
+            <div class="char-suit">char30</div>
+            <div class="char-suit">char31</div>
+            <div class="char-suit">char32</div>
+            <div class="char-suit">char33</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- end choose character -->
 
 
-
-
-	
-
-<script src="js/script.js"></script>
-</body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>

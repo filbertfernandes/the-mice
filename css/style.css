@@ -1,46 +1,29 @@
-* {
-	margin: 0;
-	padding: 0;
-}
 body {
-	background: #060c21;
-}
-.title {
-	color: #eee;
-	text-align: center;
-	font-variant: small-caps;
-	margin-top: 25px;
+	color: white;
+	background-color: #060c21;
 }
 
-/* control */
-.control {
-	text-align: center;
-	margin-top: 20px;
-	color: #eee;
-	font-weight: bold;
-}
-
-/* game box */
+/* game */
 #game {
+	background-color: white;
 	width: 500px;
 	height: 200px;
 	border: 1px solid black;
-	position: absolute;
-	top: -120px;
-	right: 0;
-	bottom: 0;
-	left: 0;
 	margin: auto;
-	transition: .2s;
-	background-color: white;
+	position: relative;
 }
 
-/* game character & block */
+/* description & control */
+.description-h5, .control-h5 {
+	text-decoration: underline;
+}
+
+/* character & block */
 #character {
 	width: 40px;
 	height: 80px;
 	position: relative;
-	top: 120px;
+	top: 119px;
 	background: url(../img/chars/char1.png) no-repeat top;
 	transition: .2s;
 }
@@ -51,8 +34,8 @@ body {
 	width: 50px;
 	height: 30px;
 	background: url(../img/blocks/mouse.png) no-repeat top;
-	position: relative;
-	top: 90px;
+	position: absolute;
+	top: 173px;
 	left: 450px;
 }
 .start {
@@ -71,12 +54,14 @@ body {
 
 /* score system */
 #score {
+	color: black;
     font-size: 24px;
     position: absolute;
     top: 10px;
     right: 50px;
 }
 .highscore {
+	color: black;
     font-size: 18px;
     position: absolute;
     top: 10px;
@@ -95,20 +80,11 @@ body {
 }
 
 /* choose character */
-.chooseCharacter {
-	width: 760px;
-	height: 150px;
-	position: absolute;
-	top: 370px;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	margin: auto;
-	padding: 10px;
+.card {
 	background: #060c21;
-	color: #eee;
+	color: white;
 }
-.chooseCharacter:before {
+.card:before {
 	content: '';
 	position: absolute;
 	top: -2px;
@@ -118,7 +94,7 @@ body {
 	background: #fff;
 	z-index: -1;
 }
-.chooseCharacter:after {
+.card:after {
 	content: '';
 	position: absolute;
 	top: -2px;
@@ -127,52 +103,38 @@ body {
 	bottom: -2px;
 	background: #fff;
 	z-index: -2;
-	filter: blur(40px);
+	filter: blur(5px);
 }
-.chooseCharacter:before, .chooseCharacter:after {
+.card:before, .card:after {
 	background: linear-gradient(190deg, red, #060c21, blue);
-}
-.chooseCharacter h2 {
-	text-align: center;
 }
 .char-suit {
 	float: left;
-	margin: 10px;
+	margin: 5px;
 	cursor: pointer;
 	transition: .1s;
 }
 .char-suit:hover {
 	color: red;
 }
-.preview {
-	width: 40px;
-	height: 80px;
-	position: relative;
-	top: 20px;
-	left: 710px;
-	background: url(../img/chars/char1.png) no-repeat top;
-	background-color: none;
-}
 
 /* mute */
-.muteButton {
-	width: 55px;
-	height: 23px;
-	padding: 2px;
-	position: absolute;
-	top: 10px;
-	left: 18px;
-	color: #eee;
+.muteButton, .startButton {
+	min-width: 90px;
+	margin-left: 10px;
+	color: white;
 	background: #060c21;
-	border: none;
 	box-shadow: 1px 1px 0 white, -1px -1px 0 white;
 	cursor: pointer;
 	transition: .3s;
 	font-weight: bold;
-	text-decoration-color: red;
-	text-decoration-style: wavy;
 }
-.muteButton:hover {
+.muteButton:hover, .startButton::hover {
 	color: #060c21;
 	background-color: white;
 }
+.muteButton {
+	text-decoration-color: red;
+	text-decoration-style: wavy;
+}
+

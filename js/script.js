@@ -100,24 +100,34 @@ const light = document.getElementById('light');
 
 // choose character
 	const charSuit = document.querySelectorAll('.char-suit');
-	const preview = document.querySelector('.preview');
 	for( let i = 0; i < charSuit.length; i++ ) {
 		charSuit[i].addEventListener('click', function() {
 			character.style.background = `url(img/chars/char${i + 1}.png) no-repeat top`;
-			preview.style.background = `url(img/chars/char${i + 1}.png) no-repeat top`;
 		})
 	}
 
 
 // pause
+	// space
 	window.addEventListener('keydown', checkKeyPressPause, false);
 	function checkKeyPressPause(key) {
 		if( key.keyCode == '32' ) {
 			block.classList.toggle('start');
 			scoreNumb = 0;
-			coinsNumb = 0;
 	    }
 	}
+
+	// button
+	let startButton = document.querySelector('.startButton');
+	startButton.addEventListener('click', function() {
+		if( block.classList.contains('start') ) {
+			block.classList.remove('start')
+			startButton.innerHTML = 'START';
+		} else if( !block.classList.contains('start') ) {
+			block.classList.add('start')
+			startButton.innerHTML = 'PAUSE';
+		}
+	})
 
 
 // sound effects
