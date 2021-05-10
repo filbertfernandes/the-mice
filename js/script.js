@@ -123,9 +123,11 @@ const light = document.getElementById('light');
 		if( block.classList.contains('start') ) {
 			block.classList.remove('start')
 			startButton.innerHTML = 'START';
+			scoreNumb = 0;
 		} else if( !block.classList.contains('start') ) {
 			block.classList.add('start')
 			startButton.innerHTML = 'PAUSE';
+			scoreNumb = 0;
 		}
 	})
 
