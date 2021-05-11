@@ -11,6 +11,7 @@ body {
 	border: 1px solid black;
 	margin: auto;
 	position: relative;
+	overflow: hidden;
 }
 
 /* description & control */
@@ -23,7 +24,7 @@ body {
 	width: 40px;
 	height: 80px;
 	position: relative;
-	top: 119px;
+	top: 120px;
 	background: url(../img/chars/char1.png) no-repeat top;
 	transition: .2s;
 }
@@ -38,8 +39,31 @@ body {
 	top: 173px;
 	left: 450px;
 }
+#flying-block {
+	width: 50px;
+	height: 42px;
+	background: url(../img/blocks/flying-mouse.png) no-repeat top;
+	position: absolute;
+	top: 58px;
+	left: 500px;
+}
+#gun {
+	width: 32px;
+	height: 21px;
+	position: relative;
+	top: 75px;
+	left: 32px;
+	background: url(../img/handgun.png) no-repeat top;
+	opacity: 0;
+}
 .start {
-	animation: block .8s infinite linear;
+	animation: block .9s infinite linear;
+}
+.flying-start {
+	animation: flyingBlock 2.5s 3s infinite linear;
+}
+.flying-block-dead {
+	animation: flyingBlockDead .5s 1 linear forwards;
 }
 @keyframes jump {
 	0% {top: 120px;}
@@ -51,11 +75,19 @@ body {
 	0% {left:450px;}
 	100% {left: -40px;}
 }
+@keyframes flyingBlock {
+	0% {left: 500px;}
+	100% {left: -40px;}
+}
+@keyframes flyingBlockDead {
+	0% {top: 70px;}
+	100% {top: 300px;}
+}
 
 /* score system */
 #score {
 	color: black;
-    font-size: 24px;
+    font-size: 18px;
     position: absolute;
     top: 10px;
     right: 50px;

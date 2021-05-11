@@ -2,6 +2,8 @@ const game = document.getElementById('game');
 const character = document.getElementById('character');
 const block = document.getElementById('block');
 const light = document.getElementById('light');
+const flyingBlock = document.getElementById('flying-block');
+const gun = document.getElementById('gun');
 
 // action
 	// 1. jump w/ click
@@ -14,6 +16,10 @@ const light = document.getElementById('light');
 			character.classList.remove('animate');
 		}, 500);
 	}
+
+	$('body').on('click', function() {
+		jump();
+	})
 
 	// 2. jump w/ arrow key
 	window.addEventListener('keydown', checkKeyPressArrow, false);
@@ -31,6 +37,36 @@ const light = document.getElementById('light');
 			setTimeout(function() {
 				light.style.opacity = '0';
 			}, 1500)
+		}
+	}
+
+	// 3. gun
+	window.addEventListener('keyup', checkKeyPressGun, false);
+	function checkKeyPressGun(key) {
+		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
+		if( key.keyCode == '71' ) {
+			if( character.classList.contains('animate') ) {
+				return;
+			} else {
+				gunshotSfx();
+				let flyingDelay = Math.floor(Math.random() *5000);
+
+				gun.style.opacity = '1';
+				setTimeout(function() {
+					gun.style.opacity = '0';
+				}, 100)
+
+				if( !block.classList.contains('start') ) return;
+
+				flyingBlock.classList.remove('flying-start');
+				flyingBlock.style.left = `${flyingBlockLeft}px`;
+				flyingBlock.classList.add('flying-block-dead');
+				setTimeout(function() {
+					flyingBlock.style.left = `500px`;
+					flyingBlock.classList.remove('flying-block-dead');
+					flyingBlock.classList.add('flying-start');
+				}, 2000)
+			}
 		}
 	}
 
@@ -62,14 +98,38 @@ const light = document.getElementById('light');
 	let checkDead = setInterval(function() {
 		let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
 		let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
 		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 90 ) {
 			block.classList.remove('start');
 			block.style.left = `${blockLeft}px`;
+			flyingBlock.classList.remove('flying-start');
+			flyingBlock.style.left = `${flyingBlockLeft}px`;
 			deadSfx();
 			let tryAgain = confirm("GAME OVER!\n   Try again?");
 			if( tryAgain == true ) {
 				block.classList.add('start');
 				block.style.left = '450px';
+				flyingBlock.classList.add('flying-start');
+				flyingBlock.style.left = '500px';
+				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
+					highscore.innerHTML = `${scoreNumb-1}`;
+				}
+				scoreNumb = 0;
+			}
+		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -20 && characterTop <= 95 ) {
+			flyingBlock.classList.add('flying-block-dead');
+			block.classList.remove('start');
+			block.style.left = `${blockLeft}px`;
+			flyingBlock.classList.remove('flying-start');
+			flyingBlock.style.left = `${flyingBlockLeft}px`;
+			deadSfx();
+			let tryAgain = confirm("GAME OVER!\n   Try again?");
+			if( tryAgain == true ) {
+				flyingBlock.classList.remove('flying-block-dead');
+				block.classList.add('start');
+				block.style.left = '450px';
+				flyingBlock.classList.add('flying-start');
+				flyingBlock.style.left = '500px';
 				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
 					highscore.innerHTML = `${scoreNumb-1}`;
 				}
@@ -113,6 +173,7 @@ const light = document.getElementById('light');
 	function checkKeyPressPause(key) {
 		if( key.keyCode == '32' ) {
 			block.classList.toggle('start');
+			flyingBlock.classList.toggle('flying-start');
 			scoreNumb = 0;
 	    }
 	}
@@ -122,10 +183,12 @@ const light = document.getElementById('light');
 	startButton.addEventListener('click', function() {
 		if( block.classList.contains('start') ) {
 			block.classList.remove('start')
+			flyingBlock.classList.remove('flying-start');
 			startButton.innerHTML = 'START';
 			scoreNumb = 0;
 		} else if( !block.classList.contains('start') ) {
 			block.classList.add('start')
+			flyingBlock.classList.remove('flying-start');
 			startButton.innerHTML = 'PAUSE';
 			scoreNumb = 0;
 		}
@@ -146,6 +209,14 @@ const light = document.getElementById('light');
 		if( mute == 'no' ) {
 			let jump = new Audio("sfx/jump.mp3");
 			jump.play();
+		}
+	}
+
+	// gunshot sfx
+	function gunshotSfx() {
+		if( mute == 'no' ) {
+			let gunshot = new Audio("sfx/gunshot.mp3");
+			gunshot.play();
 		}
 	}
 
