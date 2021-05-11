@@ -2,6 +2,9 @@ body {
 	color: white;
 	background-color: #060c21;
 }
+.choose-character {
+	margin-top: -10px;
+}
 
 /* game */
 #game {
