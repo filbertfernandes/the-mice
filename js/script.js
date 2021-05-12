@@ -11,6 +11,7 @@ const gun = document.getElementById('gun');
 		if(character.classList != 'animate') {
 			character.classList.add('animate');
 			jumpSfx();
+			gun.style.opacity = '0';
 		}
 		setTimeout(function() {
 			character.classList.remove('animate');
@@ -44,17 +45,17 @@ const gun = document.getElementById('gun');
 	window.addEventListener('keyup', checkKeyPressGun, false);
 	function checkKeyPressGun(key) {
 		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
-		if( key.keyCode == '71' ) {
+		if( key.keyCode == '88' ) {
 			if( character.classList.contains('animate') ) {
 				return;
 			} else {
 				gunshotSfx();
-				let flyingDelay = Math.floor(Math.random() *5000);
-
+				let flyingDelay = Math.floor(Math.random() * 10000);
+				
 				gun.style.opacity = '1';
 				setTimeout(function() {
 					gun.style.opacity = '0';
-				}, 100)
+				}, 500)
 
 				if( !block.classList.contains('start') ) return;
 
@@ -65,7 +66,7 @@ const gun = document.getElementById('gun');
 					flyingBlock.style.left = `500px`;
 					flyingBlock.classList.remove('flying-block-dead');
 					flyingBlock.classList.add('flying-start');
-				}, 2000)
+				}, flyingDelay)
 			}
 		}
 	}
