@@ -5,6 +5,7 @@ const light = document.getElementById('light');
 const flyingBlock = document.getElementById('flying-block');
 const gun = document.getElementById('gun');
 const gunfire = document.getElementById('gunfire');
+const progressBar = document.querySelector('.progress-bar');
 
 // action
 	// 1. jump w/ click
@@ -48,22 +49,24 @@ const gunfire = document.getElementById('gunfire');
 	function checkKeyPressGun(key) {
 		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
 		if( key.keyCode == '88' ) {
-			if( character.classList.contains('animate') ) {
+			if( character.classList.contains('animate') || progressBar.classList.contains('reload') ) {
 				return;
 			} else {
 				gunshotSfx();
 				let flyingDelay = Math.floor(Math.random() * 10000);
 				
 				gun.style.opacity = '1';
+				progressBar.classList.add('reload');
 				setTimeout(function() {
 					gun.style.opacity = '0';
-				}, 800)
+					progressBar.classList.remove('reload');
+				}, 1500)
 				gunfire.style.opacity = '1';
 				setTimeout(function() {
 					gunfire.style.opacity = '0';
 				}, 200)
 
-				if( !block.classList.contains('start') ) return;
+				if( flyingBlockLeft > 450 ) return;
 
 				flyingBlock.classList.remove('flying-start');
 				flyingBlock.style.left = `${flyingBlockLeft}px`;
@@ -93,7 +96,7 @@ const gunfire = document.getElementById('gunfire');
 
 
 // score system
-	let score = document.getElementById("score");
+	let score = document.querySelector(".score");
 	let scoreNumb = 0;
 	let highscore = document.querySelector('.highscore span');
 	let scoreSystem = setInterval(function() {
@@ -123,7 +126,7 @@ const gunfire = document.getElementById('gunfire');
 				}
 				scoreNumb = 0;
 			}
-		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -20 && characterTop <= 95 ) {
+		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -20 && characterTop <= 73 ) {
 			flyingBlock.classList.add('flying-block-dead');
 			block.classList.remove('start');
 			block.style.left = `${blockLeft}px`;
@@ -153,15 +156,9 @@ const gunfire = document.getElementById('gunfire');
 	// 1. background #game dan #character
 	setInterval(function() {
 		game.style.backgroundColor = 'black';
-		score.style.color = 'white';
-		highscore.style.color = 'white';
-		highscore.parentElement.style.color = 'white';
 	}, time1);
 	setInterval(function() {
 		game.style.backgroundColor = 'white';
-		score.style.color = 'black';
-		highscore.style.color = 'black';
-		highscore.parentElement.style.color = 'black';
 	}, time2);
 
 

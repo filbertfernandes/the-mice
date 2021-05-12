@@ -27,7 +27,7 @@ body {
 	width: 40px;
 	height: 80px;
 	position: relative;
-	top: 120px;
+	top: 98px;
 	background: url(../img/chars/char1.png) no-repeat top;
 	transition: .2s;
 }
@@ -54,7 +54,7 @@ body {
 	width: 32px;
 	height: 21px;
 	position: relative;
-	top: 73px;
+	top: 51px;
 	left: 32px;
 	background: url(../img/handgun.png) no-repeat top;
 	opacity: 0;
@@ -63,7 +63,7 @@ body {
 	width: 23px;
 	height: 10px;
 	position: relative;
-	top: 52px;
+	top: 30px;
 	left: 56px;
 	background: url(../img/gunfire.png) no-repeat top;
 	opacity: 0;
@@ -72,16 +72,16 @@ body {
 	animation: block .9s infinite linear;
 }
 .flying-start {
-	animation: flyingBlock 2.5s 3s infinite linear;
+	animation: flyingBlock 2s 3s infinite linear;
 }
 .flying-block-dead {
 	animation: flyingBlockDead .5s 1 linear forwards;
 }
 @keyframes jump {
-	0% {top: 120px;}
-	30% {top: 60px;}
-	70% {top: 60px;}
-	100% {top: 120px;}
+	0% {top: 98px;}
+	30% {top: 38px;}
+	70% {top: 38px;}
+	100% {top: 98px;}
 }
 @keyframes block {
 	0% {left:450px;}
@@ -97,19 +97,19 @@ body {
 }
 
 /* score system */
-#score {
-	color: black;
+.score {
+	color: white;
     font-size: 18px;
     position: absolute;
-    top: 5px;
-    right: 50px;
+    top: 60px;
+    right: 435px;
 }
 .highscore {
-	color: black;
+	color: white;
     font-size: 18px;
     position: absolute;
-    top: 5px;
-    left: 30px;
+    top: 60px;
+    left: 435px;
 }
 
 /* light */
@@ -182,3 +182,20 @@ body {
 	text-decoration-style: wavy;
 }
 
+/* reload */
+.progress-row {
+	margin-top: 5px;
+	margin-left: -10px;
+}
+.progress {
+	height: 15px;
+	border: 1px solid #060c21;
+}
+.reload {
+	animation: reload 1.5s 1 linear forwards;
+}
+@keyframes reload {
+	0% {width: 100%;}
+	25% {width: 0%;}
+	100% {width: 100%;}
+}

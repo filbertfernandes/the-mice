@@ -25,19 +25,29 @@
 </div>
 <!-- end title -->
 
+<!-- score -->
+<div class="score">0</div>
+<div class="highscore">Highscore: <span>0</span></div>
+<!-- end score -->
+
 <!-- game -->
 <div class="container mt-3">
   <div class="row">
     <div class="col-md-12">
       <div id="game">
+        <div class="row progress-row">
+          <div class="col-lg-4">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
         <div id="character"></div>
         <div id="gun"></div>
         <div id="gunfire"></div>
         <img src="img/light.png" id="light">
         <div id="flying-block"></div>
         <div id="block"></div>
-        <div id="score">0</div>
-        <div class="highscore">Highscore: <span>0</span></div>
       </div>
     </div>
   </div>
