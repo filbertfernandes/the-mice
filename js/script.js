@@ -4,6 +4,7 @@ const block = document.getElementById('block');
 const light = document.getElementById('light');
 const flyingBlock = document.getElementById('flying-block');
 const gun = document.getElementById('gun');
+const gunfire = document.getElementById('gunfire');
 
 // action
 	// 1. jump w/ click
@@ -12,6 +13,7 @@ const gun = document.getElementById('gun');
 			character.classList.add('animate');
 			jumpSfx();
 			gun.style.opacity = '0';
+			gunfire.style.opacity = '0';
 		}
 		setTimeout(function() {
 			character.classList.remove('animate');
@@ -55,7 +57,11 @@ const gun = document.getElementById('gun');
 				gun.style.opacity = '1';
 				setTimeout(function() {
 					gun.style.opacity = '0';
-				}, 500)
+				}, 800)
+				gunfire.style.opacity = '1';
+				setTimeout(function() {
+					gunfire.style.opacity = '0';
+				}, 200)
 
 				if( !block.classList.contains('start') ) return;
 

@@ -54,9 +54,18 @@ body {
 	width: 32px;
 	height: 21px;
 	position: relative;
-	top: 75px;
+	top: 73px;
 	left: 32px;
 	background: url(../img/handgun.png) no-repeat top;
+	opacity: 0;
+}
+#gunfire {
+	width: 23px;
+	height: 10px;
+	position: relative;
+	top: 52px;
+	left: 56px;
+	background: url(../img/gunfire.png) no-repeat top;
 	opacity: 0;
 }
 .start {
