@@ -179,9 +179,17 @@ const gunfire = document.getElementById('gunfire');
 	window.addEventListener('keydown', checkKeyPressPause, false);
 	function checkKeyPressPause(key) {
 		if( key.keyCode == '32' ) {
-			block.classList.toggle('start');
-			flyingBlock.classList.toggle('flying-start');
-			scoreNumb = 0;
+			if( block.classList.contains('start') ) {
+				block.classList.remove('start')
+				flyingBlock.classList.remove('flying-start');
+				startButton.innerHTML = 'START';
+				scoreNumb = 0;
+			} else if( !block.classList.contains('start') ) {
+				block.classList.add('start')
+				flyingBlock.classList.add('flying-start');
+				startButton.innerHTML = 'PAUSE';
+				scoreNumb = 0;
+			}
 	    }
 	}
 
@@ -195,7 +203,7 @@ const gunfire = document.getElementById('gunfire');
 			scoreNumb = 0;
 		} else if( !block.classList.contains('start') ) {
 			block.classList.add('start')
-			flyingBlock.classList.remove('flying-start');
+			flyingBlock.classList.add('flying-start');
 			startButton.innerHTML = 'PAUSE';
 			scoreNumb = 0;
 		}
