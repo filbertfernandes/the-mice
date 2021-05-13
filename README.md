@@ -1,5 +1,5 @@
 # the-mice
-A video game inspired by Chrome's Dino Runner. Avoid the running mouse, shoot the flying mouse, choose your character, and turn on the light when it's dark!
+A video game inspired by Chrome's Dino Runner. Avoid the running mouse, shoot the mouse, choose your character, and turn on the light when it's dark!
 
 This is a modified code from KnifeCircus' tutorial on YT, you can check the tutorial here:
 https://www.youtube.com/watch?v=bG2BmmYr9NQ
