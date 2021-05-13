@@ -6,6 +6,7 @@ const flyingBlock = document.getElementById('flying-block');
 const gun = document.getElementById('gun');
 const gunfire = document.getElementById('gunfire');
 const progressBar = document.querySelector('.progress-bar');
+const fatBlock = document.getElementById('fat-block');
 
 // action
 	// 1. jump w/ click
@@ -48,34 +49,56 @@ const progressBar = document.querySelector('.progress-bar');
 	window.addEventListener('keyup', checkKeyPressGun, false);
 	function checkKeyPressGun(key) {
 		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
+		let fatBlockLeft = parseInt(window.getComputedStyle(fatBlock).getPropertyValue("left"))
 		if( key.keyCode == '88' ) {
 			if( character.classList.contains('animate') || progressBar.classList.contains('reload') ) {
 				return;
 			} else {
 				gunshotSfx();
-				let flyingDelay = Math.floor(Math.random() * 10000);
 				
 				gun.style.opacity = '1';
 				progressBar.classList.add('reload');
 				setTimeout(function() {
 					gun.style.opacity = '0';
 					progressBar.classList.remove('reload');
-				}, 1500)
+				}, 1200)
 				gunfire.style.opacity = '1';
 				setTimeout(function() {
 					gunfire.style.opacity = '0';
 				}, 200)
 
-				if( flyingBlockLeft > 450 ) return;
+				if( flyingBlockLeft > 550 && fatBlockLeft > 550) return;
 
-				flyingBlock.classList.remove('flying-start');
-				flyingBlock.style.left = `${flyingBlockLeft}px`;
-				flyingBlock.classList.add('flying-block-dead');
-				setTimeout(function() {
-					flyingBlock.style.left = `500px`;
-					flyingBlock.classList.remove('flying-block-dead');
-					flyingBlock.classList.add('flying-start');
-				}, flyingDelay)
+				if( flyingBlockLeft <= fatBlockLeft ) {
+					let flyingDelay = Math.floor(Math.random() * 10000);
+					flyingBlock.classList.remove('flying-start');
+					flyingBlock.style.left = `${flyingBlockLeft}px`;
+					flyingBlock.classList.add('flying-block-dead');
+					setTimeout(function() {
+						flyingBlock.style.left = '600px';
+					}, 500)
+					setTimeout(function() {
+						if( block.classList.contains('start') ) {
+							flyingBlock.classList.remove('flying-block-dead');
+							flyingBlock.classList.add('flying-start');
+						}
+					}, flyingDelay)
+				} else if( fatBlockLeft < flyingBlockLeft ) {
+					let fatDelay = Math.floor(Math.random() * 15000);
+					fatBlock.classList.remove('fat-start');
+					fatBlock.style.left = `${fatBlockLeft}px`;
+					fatBlock.classList.add('fat-block-dead');
+					setTimeout(function() {
+						fatBlock.style.left = '600px';
+					}, 500)
+					setTimeout(function() {	
+						if( block.classList.contains('start') ) {
+							fatBlock.classList.remove('fat-block-dead');
+							fatBlock.classList.add('fat-start');
+						}
+					}, fatDelay)
+				}
+
 			}
 		}
 	}
@@ -110,56 +133,95 @@ const progressBar = document.querySelector('.progress-bar');
 		let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
 		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
 		let flyingBlockTop = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("top"));
-		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 76 ) {
+		let fatBlockLeft = parseInt(window.getComputedStyle(fatBlock).getPropertyValue("left"));
+		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 96 ) {
 			block.classList.remove('start');
 			block.style.left = `${blockLeft}px`;
 			flyingBlock.classList.remove('flying-start');
 			flyingBlock.style.left = `${flyingBlockLeft}px`;
+			fatBlock.classList.remove('fat-start');
+			fatBlock.style.left = `${fatBlockLeft}px`;
 			deadSfx();
 			let tryAgain = confirm("GAME OVER!\n   Try again?");
 			if( tryAgain == true ) {
+				flyingBlock.classList.remove('flying-block-dead');
+				fatBlock.classList.remove('fat-block-dead');
 				block.classList.add('start');
-				block.style.left = '450px';
+				block.style.left = '550px';
 				flyingBlock.classList.add('flying-start');
-				flyingBlock.style.left = '500px';
+				flyingBlock.style.left = '600px';
+				fatBlock.classList.add('fat-start');
+				fatBlock.style.left = '600px';
 				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
 					highscore.innerHTML = `${scoreNumb-1}`;
 				}
 				scoreNumb = 0;
 			}
-		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -40 && characterTop <= 78 ) {
+		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -40 && characterTop <= 98 ) {
 			flyingBlock.classList.add('flying-block-dead');
 			block.classList.remove('start');
 			block.style.left = `${blockLeft}px`;
 			flyingBlock.classList.remove('flying-start');
 			flyingBlock.style.left = `${flyingBlockLeft}px`;
+			fatBlock.classList.remove('fat-start');
+			fatBlock.style.left = `${fatBlockLeft}px`;
 			deadSfx();
 			let tryAgain = confirm("GAME OVER!\n   Try again?");
 			if( tryAgain == true ) {
 				flyingBlock.classList.remove('flying-block-dead');
+				fatBlock.classList.remove('fat-block-dead');
 				block.classList.add('start');
-				block.style.left = '450px';
+				block.style.left = '550px';
 				flyingBlock.classList.add('flying-start');
-				flyingBlock.style.left = '500px';
+				flyingBlock.style.left = '600px';
+				fatBlock.classList.add('fat-start');
+				fatBlock.style.left = '600px';
 				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
 					highscore.innerHTML = `${scoreNumb-1}`;
 				}
 				scoreNumb = 0;
 			}
-		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -40 && flyingBlockTop >= 80 ) {
-			flyingBlock.classList.add('flying-block-dead');
+		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -40 && flyingBlockTop >= 100 ) {
 			block.classList.remove('start');
 			block.style.left = `${blockLeft}px`;
 			flyingBlock.classList.remove('flying-start');
 			flyingBlock.style.left = `${flyingBlockLeft}px`;
+			fatBlock.classList.remove('fat-start');
+			fatBlock.style.left = `${fatBlockLeft}px`;
 			deadSfx();
 			let tryAgain = confirm("GAME OVER!\n   Try again?");
 			if( tryAgain == true ) {
 				flyingBlock.classList.remove('flying-block-dead');
+				fatBlock.classList.remove('fat-block-dead');
 				block.classList.add('start');
-				block.style.left = '450px';
+				block.style.left = '550px';
 				flyingBlock.classList.add('flying-start');
-				flyingBlock.style.left = '500px';
+				flyingBlock.style.left = '600px';
+				fatBlock.classList.add('fat-start');
+				fatBlock.style.left = '600px';
+				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
+					highscore.innerHTML = `${scoreNumb-1}`;
+				}
+				scoreNumb = 0;
+			}
+		} else if( fatBlockLeft < 40 && fatBlockLeft > -40 && characterTop >= 76 ) {
+			block.classList.remove('start');
+			block.style.left = `${blockLeft}px`;
+			flyingBlock.classList.remove('flying-start');
+			flyingBlock.style.left = `${flyingBlockLeft}px`;
+			fatBlock.classList.remove('fat-start');
+			fatBlock.style.left = `${fatBlockLeft}px`;
+			deadSfx();
+			let tryAgain = confirm("GAME OVER!\n   Try again?");
+			if( tryAgain == true ) {
+				flyingBlock.classList.remove('flying-block-dead');
+				fatBlock.classList.remove('fat-block-dead');
+				block.classList.add('start');
+				block.style.left = '550px';
+				flyingBlock.classList.add('flying-start');
+				flyingBlock.style.left = '600px';
+				fatBlock.classList.add('fat-start');
+				fatBlock.style.left = '600px';
 				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
 					highscore.innerHTML = `${scoreNumb-1}`;
 				}
@@ -199,11 +261,13 @@ const progressBar = document.querySelector('.progress-bar');
 			if( block.classList.contains('start') ) {
 				block.classList.remove('start')
 				flyingBlock.classList.remove('flying-start');
+				fatBlock.classList.remove('fat-start')
 				startButton.innerHTML = 'START';
 				scoreNumb = 0;
 			} else if( !block.classList.contains('start') ) {
 				block.classList.add('start')
 				flyingBlock.classList.add('flying-start');
+				fatBlock.classList.add('fat-start')
 				startButton.innerHTML = 'PAUSE';
 				scoreNumb = 0;
 			}
@@ -216,11 +280,13 @@ const progressBar = document.querySelector('.progress-bar');
 		if( block.classList.contains('start') ) {
 			block.classList.remove('start')
 			flyingBlock.classList.remove('flying-start');
+			fatBlock.classList.remove('fat-start')
 			startButton.innerHTML = 'START';
 			scoreNumb = 0;
 		} else if( !block.classList.contains('start') ) {
 			block.classList.add('start')
 			flyingBlock.classList.add('flying-start');
+			fatBlock.classList.add('fat-start')
 			startButton.innerHTML = 'PAUSE';
 			scoreNumb = 0;
 		}

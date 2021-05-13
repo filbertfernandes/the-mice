@@ -9,8 +9,8 @@ body {
 /* game */
 #game {
 	background-color: white;
-	width: 500px;
-	height: 200px;
+	width: 600px;
+	height: 220px;
 	border: 1px solid black;
 	margin: auto;
 	position: relative;
@@ -27,7 +27,7 @@ body {
 	width: 40px;
 	height: 80px;
 	position: relative;
-	top: 98px;
+	top: 118px;
 	background: url(../img/chars/char1.png) no-repeat top;
 	transition: .2s;
 }
@@ -39,22 +39,30 @@ body {
 	height: 30px;
 	background: url(../img/blocks/mouse.png) no-repeat top;
 	position: absolute;
-	top: 173px;
-	left: 450px;
+	top: 193px;
+	left: 550px;
 }
 #flying-block {
 	width: 50px;
 	height: 42px;
 	background: url(../img/blocks/flying-mouse.png) no-repeat top;
 	position: absolute;
-	top: 58px;
-	left: 500px;
+	top: 78px;
+	left: 600px;
+}
+#fat-block {
+	width: 61px;
+	height: 50px;
+	background: url(../img/blocks/fat-mouse.png) no-repeat top;
+	position: absolute;
+	top: 183px;
+	left: 600px;
 }
 #gun {
 	width: 32px;
 	height: 21px;
 	position: relative;
-	top: 51px;
+	top: 71px;
 	left: 32px;
 	background: url(../img/handgun.png) no-repeat top;
 	opacity: 0;
@@ -63,7 +71,7 @@ body {
 	width: 23px;
 	height: 10px;
 	position: relative;
-	top: 30px;
+	top: 50px;
 	left: 56px;
 	background: url(../img/gunfire.png) no-repeat top;
 	opacity: 0;
@@ -77,23 +85,37 @@ body {
 .flying-block-dead {
 	animation: flyingBlockDead .5s 1 linear forwards;
 }
+.fat-start {
+	animation: fatBlock 4s 3.5s infinite linear;
+}
+.fat-block-dead {
+	animation: fatBlockDead .2s 1 linear forwards;
+}
 @keyframes jump {
-	0% {top: 98px;}
-	30% {top: 38px;}
-	70% {top: 38px;}
-	100% {top: 98px;}
+	0% {top: 118px;}
+	30% {top: 58px;}
+	70% {top: 58px;}
+	100% {top: 118px;}
 }
 @keyframes block {
-	0% {left:450px;}
-	100% {left: -40px;}
+	0% {left:550px;}
+	100% {left: -50px;}
 }
 @keyframes flyingBlock {
-	0% {left: 500px;}
+	0% {left: 600px;}
+	100% {left: -50px;}
+}
+@keyframes fatBlock {
+	0% {left:600px;}
 	100% {left: -50px;}
 }
 @keyframes flyingBlockDead {
-	0% {top: 58px;}
+	0% {top: 78px;}
 	100% {top: 300px;}
+}
+@keyframes fatBlockDead {
+	0% {transform: none;}
+	100% {transform: rotate(180deg);}
 }
 
 /* score system */
@@ -102,21 +124,21 @@ body {
     font-size: 18px;
     position: absolute;
     top: 60px;
-    right: 435px;
+    right: 385px;
 }
 .highscore {
 	color: white;
     font-size: 18px;
     position: absolute;
     top: 60px;
-    left: 435px;
+    left: 385px;
 }
 
 /* light */
 #light {
 	opacity: 0;
-	width: 360px;
-	height: 215px;
+	width: 460px;
+	height: 235px;
 	position: absolute;
 	top: 0px;
 	left: 80px;
@@ -192,7 +214,7 @@ body {
 	border: 1px solid #060c21;
 }
 .reload {
-	animation: reload 1.5s 1 linear forwards;
+	animation: reload 1.2s 1 linear forwards;
 }
 @keyframes reload {
 	0% {width: 100%;}
