@@ -109,7 +109,8 @@ const progressBar = document.querySelector('.progress-bar');
 		let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
 		let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
 		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
-		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 90 ) {
+		let flyingBlockTop = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("top"));
+		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 76 ) {
 			block.classList.remove('start');
 			block.style.left = `${blockLeft}px`;
 			flyingBlock.classList.remove('flying-start');
@@ -126,7 +127,26 @@ const progressBar = document.querySelector('.progress-bar');
 				}
 				scoreNumb = 0;
 			}
-		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -20 && characterTop <= 73 ) {
+		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -40 && characterTop <= 78 ) {
+			flyingBlock.classList.add('flying-block-dead');
+			block.classList.remove('start');
+			block.style.left = `${blockLeft}px`;
+			flyingBlock.classList.remove('flying-start');
+			flyingBlock.style.left = `${flyingBlockLeft}px`;
+			deadSfx();
+			let tryAgain = confirm("GAME OVER!\n   Try again?");
+			if( tryAgain == true ) {
+				flyingBlock.classList.remove('flying-block-dead');
+				block.classList.add('start');
+				block.style.left = '450px';
+				flyingBlock.classList.add('flying-start');
+				flyingBlock.style.left = '500px';
+				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
+					highscore.innerHTML = `${scoreNumb-1}`;
+				}
+				scoreNumb = 0;
+			}
+		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -40 && flyingBlockTop >= 80 ) {
 			flyingBlock.classList.add('flying-block-dead');
 			block.classList.remove('start');
 			block.style.left = `${blockLeft}px`;

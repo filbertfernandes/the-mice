@@ -89,10 +89,10 @@ body {
 }
 @keyframes flyingBlock {
 	0% {left: 500px;}
-	100% {left: -40px;}
+	100% {left: -50px;}
 }
 @keyframes flyingBlockDead {
-	0% {top: 70px;}
+	0% {top: 58px;}
 	100% {top: 300px;}
 }
 
