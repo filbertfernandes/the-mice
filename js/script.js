@@ -134,7 +134,7 @@ const fatBlock = document.getElementById('fat-block');
 		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
 		let flyingBlockTop = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("top"));
 		let fatBlockLeft = parseInt(window.getComputedStyle(fatBlock).getPropertyValue("left"));
-		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 96 ) {
+		function die() {
 			block.classList.remove('start');
 			block.style.left = `${blockLeft}px`;
 			flyingBlock.classList.remove('flying-start');
@@ -142,9 +142,9 @@ const fatBlock = document.getElementById('fat-block');
 			fatBlock.classList.remove('fat-start');
 			fatBlock.style.left = `${fatBlockLeft}px`;
 			deadSfx();
-			let tryAgain = confirm("GAME OVER!\n   Try again?");
-			if( tryAgain == true ) {
-				flyingBlock.classList.remove('flying-block-dead');
+		}
+		function retry() {
+			flyingBlock.classList.remove('flying-block-dead');
 				fatBlock.classList.remove('fat-block-dead');
 				block.classList.add('start');
 				block.style.left = '550px';
@@ -156,86 +156,40 @@ const fatBlock = document.getElementById('fat-block');
 					highscore.innerHTML = `${scoreNumb-1}`;
 				}
 				scoreNumb = 0;
+		}
+		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 96 ) {
+			die();
+			let tryAgain = confirm("GAME OVER!\n   Try again?");
+			if( tryAgain == true ) {
+				retry();
 			}
 		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -40 && characterTop <= 98 ) {
 			flyingBlock.classList.add('flying-block-dead');
-			block.classList.remove('start');
-			block.style.left = `${blockLeft}px`;
-			flyingBlock.classList.remove('flying-start');
-			flyingBlock.style.left = `${flyingBlockLeft}px`;
-			fatBlock.classList.remove('fat-start');
-			fatBlock.style.left = `${fatBlockLeft}px`;
-			deadSfx();
+			die();
 			let tryAgain = confirm("GAME OVER!\n   Try again?");
 			if( tryAgain == true ) {
-				flyingBlock.classList.remove('flying-block-dead');
-				fatBlock.classList.remove('fat-block-dead');
-				block.classList.add('start');
-				block.style.left = '550px';
-				flyingBlock.classList.add('flying-start');
-				flyingBlock.style.left = '600px';
-				fatBlock.classList.add('fat-start');
-				fatBlock.style.left = '600px';
-				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
-					highscore.innerHTML = `${scoreNumb-1}`;
-				}
-				scoreNumb = 0;
+				retry();
 			}
 		} else if( flyingBlockLeft < 40 && flyingBlockLeft > -40 && flyingBlockTop >= 100 ) {
-			block.classList.remove('start');
-			block.style.left = `${blockLeft}px`;
-			flyingBlock.classList.remove('flying-start');
-			flyingBlock.style.left = `${flyingBlockLeft}px`;
-			fatBlock.classList.remove('fat-start');
-			fatBlock.style.left = `${fatBlockLeft}px`;
-			deadSfx();
+			die();
 			let tryAgain = confirm("GAME OVER!\n   Try again?");
 			if( tryAgain == true ) {
-				flyingBlock.classList.remove('flying-block-dead');
-				fatBlock.classList.remove('fat-block-dead');
-				block.classList.add('start');
-				block.style.left = '550px';
-				flyingBlock.classList.add('flying-start');
-				flyingBlock.style.left = '600px';
-				fatBlock.classList.add('fat-start');
-				fatBlock.style.left = '600px';
-				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
-					highscore.innerHTML = `${scoreNumb-1}`;
-				}
-				scoreNumb = 0;
+				retry();
 			}
 		} else if( fatBlockLeft < 40 && fatBlockLeft > -40 && characterTop >= 76 ) {
-			block.classList.remove('start');
-			block.style.left = `${blockLeft}px`;
-			flyingBlock.classList.remove('flying-start');
-			flyingBlock.style.left = `${flyingBlockLeft}px`;
-			fatBlock.classList.remove('fat-start');
-			fatBlock.style.left = `${fatBlockLeft}px`;
-			deadSfx();
+			die();
 			let tryAgain = confirm("GAME OVER!\n   Try again?");
 			if( tryAgain == true ) {
-				flyingBlock.classList.remove('flying-block-dead');
-				fatBlock.classList.remove('fat-block-dead');
-				block.classList.add('start');
-				block.style.left = '550px';
-				flyingBlock.classList.add('flying-start');
-				flyingBlock.style.left = '600px';
-				fatBlock.classList.add('fat-start');
-				fatBlock.style.left = '600px';
-				if( parseInt(highscore.innerHTML) <= scoreNumb ) {
-					highscore.innerHTML = `${scoreNumb-1}`;
-				}
-				scoreNumb = 0;
+				retry();
 			}
 		}
 	},10)
 	
 
-// ubah background di waktu tertentu
+// change background within a certain time 
 	let time1 = Math.floor(Math.random() *10000) +8000;
 	let time2 = Math.floor(Math.random() *20000) +8000;
 
-	// 1. background #game dan #character
 	setInterval(function() {
 		game.style.backgroundColor = 'black';
 	}, time1);
@@ -254,22 +208,29 @@ const fatBlock = document.getElementById('fat-block');
 
 
 // pause
+	function pause() {
+		block.classList.remove('start')
+		flyingBlock.classList.remove('flying-start');
+		fatBlock.classList.remove('fat-start')
+		startButton.innerHTML = 'START';
+		scoreNumb = 0;
+	}
+	function start() {
+		block.classList.add('start')
+		flyingBlock.classList.add('flying-start');
+		fatBlock.classList.add('fat-start')
+		startButton.innerHTML = 'PAUSE';
+		scoreNumb = 0;
+	}
+	
 	// space
 	window.addEventListener('keydown', checkKeyPressPause, false);
 	function checkKeyPressPause(key) {
 		if( key.keyCode == '32' ) {
 			if( block.classList.contains('start') ) {
-				block.classList.remove('start')
-				flyingBlock.classList.remove('flying-start');
-				fatBlock.classList.remove('fat-start')
-				startButton.innerHTML = 'START';
-				scoreNumb = 0;
+				pause();
 			} else if( !block.classList.contains('start') ) {
-				block.classList.add('start')
-				flyingBlock.classList.add('flying-start');
-				fatBlock.classList.add('fat-start')
-				startButton.innerHTML = 'PAUSE';
-				scoreNumb = 0;
+				start();
 			}
 	    }
 	}
@@ -278,17 +239,9 @@ const fatBlock = document.getElementById('fat-block');
 	let startButton = document.querySelector('.startButton');
 	startButton.addEventListener('click', function() {
 		if( block.classList.contains('start') ) {
-			block.classList.remove('start')
-			flyingBlock.classList.remove('flying-start');
-			fatBlock.classList.remove('fat-start')
-			startButton.innerHTML = 'START';
-			scoreNumb = 0;
+			pause();
 		} else if( !block.classList.contains('start') ) {
-			block.classList.add('start')
-			flyingBlock.classList.add('flying-start');
-			fatBlock.classList.add('fat-start')
-			startButton.innerHTML = 'PAUSE';
-			scoreNumb = 0;
+			start();
 		}
 	})
 
