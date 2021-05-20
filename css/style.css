@@ -188,7 +188,10 @@ body {
 	transition: .1s;
 }
 .char-suit:hover {
-	color: red;
+	color: #00b530;
+}
+.active {
+	color: #00b530;
 }
 
 /* mute */

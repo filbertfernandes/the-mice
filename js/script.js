@@ -205,6 +205,10 @@ const fatBlock = document.getElementById('fat-block');
 			character.style.background = `url(img/chars/char${i + 1}.png) no-repeat top`;
 		})
 	}
+	$('.char-suit').on('click', function() {
+		$('.char-suit').removeClass('active');
+		$(this).addClass('active');
+	})
 
 
 // pause
