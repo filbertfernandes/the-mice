@@ -1,9 +1,16 @@
 body {
 	color: white;
-	background-color: #060c21;
+	background-color: #081130;
 }
 .choose-character {
 	margin-top: -10px;
+}
+.back {
+	color: white;
+	text-decoration: none;
+}
+.back:hover {
+	color: white;
 }
 
 /* game */
@@ -147,7 +154,7 @@ body {
 
 /* choose character */
 .card {
-	background: #060c21;
+	background: #081130;
 	color: white;
 }
 .card:before {
@@ -172,7 +179,7 @@ body {
 	filter: blur(5px);
 }
 .card:before, .card:after {
-	background: linear-gradient(190deg, red, #060c21, blue);
+	background: linear-gradient(190deg, #00b530, #081130, #00b530);
 }
 .char-suit {
 	float: left;
@@ -189,19 +196,27 @@ body {
 	min-width: 90px;
 	margin-left: 10px;
 	color: white;
-	background: #060c21;
+	background: #081130;
 	box-shadow: 1px 1px 0 white, -1px -1px 0 white;
 	cursor: pointer;
 	transition: .3s;
 	font-weight: bold;
 }
 .muteButton:hover, .startButton::hover {
-	color: #060c21;
+	color: #081130;
 	background-color: white;
 }
 .muteButton {
 	text-decoration-color: red;
 	text-decoration-style: wavy;
+}
+button a {
+	color: white;
+	text-decoration: none;
+}
+button a:hover {
+	color: white;
+	text-decoration: none;
 }
 
 /* reload */
@@ -211,7 +226,7 @@ body {
 }
 .progress {
 	height: 15px;
-	border: 1px solid #060c21;
+	border: 1px solid #081130;
 }
 .reload {
 	animation: reload 1.2s 1 linear forwards;
