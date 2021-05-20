@@ -130,15 +130,15 @@ body {
 	color: white;
     font-size: 18px;
     position: absolute;
-    top: 60px;
-    right: 385px;
+    top: -30px;
+    right: 275px;
 }
 .highscore {
 	color: white;
     font-size: 18px;
     position: absolute;
-    top: 60px;
-    left: 385px;
+    top: -30px;
+    left: 275px;
 }
 
 /* light */
