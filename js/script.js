@@ -22,35 +22,32 @@ const fatBlock = document.getElementById('fat-block');
 		}, 500);
 	}
 
-	$('body').on('click', function() {
+	$('body').click(function() {
 		jump();
 	})
 
 	// 2. jump w/ arrow key
-	window.addEventListener('keydown', checkKeyPressArrow, false);
-	function checkKeyPressArrow(key) {
-		if( key.keyCode == '38' ) {
+	$(window).keydown(function(event) {
+		if( event.which == 38 ) {
 			jump();
-	    }
-	}
+		}
+	})
 
 	// 3. light
-	window.addEventListener('keyup', checkKeyPressOn, false);
-	function checkKeyPressOn(key) {
-		if( key.keyCode == '17' ) {
+	$(window).keyup(function(event) {
+		if( event.which == 17 ) {
 			light.style.opacity = '.5';
 			setTimeout(function() {
 				light.style.opacity = '0';
 			}, 1500)
 		}
-	}
+	})
 
 	// 3. gun
-	window.addEventListener('keyup', checkKeyPressGun, false);
-	function checkKeyPressGun(key) {
+	$(window).keyup(function(event) {
 		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
 		let fatBlockLeft = parseInt(window.getComputedStyle(fatBlock).getPropertyValue("left"))
-		if( key.keyCode == '88' ) {
+		if( event.which == 88 ) {
 			if( character.classList.contains('animate') || progressBar.classList.contains('reload') ) {
 				return;
 			} else {
@@ -101,7 +98,7 @@ const fatBlock = document.getElementById('fat-block');
 
 			}
 		}
-	}
+	})
 
 
 // mute
@@ -225,16 +222,15 @@ const fatBlock = document.getElementById('fat-block');
 	}
 	
 	// space
-	window.addEventListener('keydown', checkKeyPressPause, false);
-	function checkKeyPressPause(key) {
-		if( key.keyCode == '32' ) {
+	$(window).keydown(function(event) {
+		if( event.which == 32 ) {
 			if( block.classList.contains('start') ) {
 				pause();
 			} else if( !block.classList.contains('start') ) {
 				start();
 			}
-	    }
-	}
+		}
+	})
 
 	// button
 	let startButton = document.querySelector('.startButton');
