@@ -117,10 +117,10 @@ const fatBlock = document.getElementById('fat-block');
 
 // score system
 	let score = document.querySelector(".score");
-	let scoreNumb = 0;
+	let scoreNum = 0;
 	let highscore = document.querySelector('.highscore span');
 	let scoreSystem = setInterval(function() {
-			score.innerHTML = scoreNumb++;
+			score.innerHTML = scoreNum++;
 		},100)
 
 
@@ -146,10 +146,10 @@ const fatBlock = document.getElementById('fat-block');
 			block.style.left = '550px';
 			flyingBlock.style.left = '600px';
 			fatBlock.style.left = '600px';
-			if( parseInt(highscore.innerHTML) <= scoreNumb ) {
-				highscore.innerHTML = `${scoreNumb-1}`;
+			if( parseInt(highscore.innerHTML) <= scoreNum ) {
+				highscore.innerHTML = `${scoreNum-1}`;
 			}
-			scoreNumb = 0;
+			scoreNum = 0;
 		}
 		if( blockLeft < 40 && blockLeft > -20 && characterTop >= 96 ) {
 			die();
@@ -211,14 +211,14 @@ const fatBlock = document.getElementById('fat-block');
 		flyingBlock.classList.remove('flying-start');
 		fatBlock.classList.remove('fat-start')
 		startButton.innerHTML = 'START';
-		scoreNumb = 0;
+		scoreNum = 0;
 	}
 	function start() {
 		block.classList.add('start')
 		flyingBlock.classList.add('flying-start');
 		fatBlock.classList.add('fat-start')
 		startButton.innerHTML = 'PAUSE';
-		scoreNumb = 0;
+		scoreNum = 0;
 	}
 	
 	// space
