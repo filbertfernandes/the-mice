@@ -1,3 +1,12 @@
+window.onload = function(){
+	const mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+	if(mobile) {
+		alert("The Mice can only be played on PC (or anything with keyboard).");              
+    } else {
+
+    }
+}
+
 const game = document.getElementById('game');
 const character = document.getElementById('character');
 const block = document.getElementById('block');
