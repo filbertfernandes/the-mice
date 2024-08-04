@@ -1,246 +1,284 @@
 body {
-	color: white;
-	background-color: #081130;
+  color: white;
+  background-color: #081130;
 }
 .choose-character {
-	margin-top: -10px;
+  margin-top: -10px;
 }
 .back {
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 .back:hover {
-	color: white;
+  color: white;
 }
 
 /* game */
 #game {
-	background-color: white;
-	width: 600px;
-	height: 220px;
-	border: 1px solid black;
-	margin: auto;
-	position: relative;
-	overflow: hidden;
+  background-color: white;
+  width: 600px;
+  height: 220px;
+  border: 1px solid black;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
 }
 
 /* description & control */
-.description-h5, .control-h5 {
-	text-decoration: underline;
+.description-h5,
+.control-h5 {
+  text-decoration: underline;
 }
 
 /* character & block */
 #character {
-	width: 40px;
-	height: 80px;
-	position: relative;
-	top: 118px;
-	background: url(../img/chars/char1.png) no-repeat top;
-	transition: .2s;
+  width: 40px;
+  height: 80px;
+  position: relative;
+  top: 118px;
+  background: url(../img/chars/char1.png) no-repeat top;
+  transition: 0.2s;
 }
 .animate {
-	animation: jump 500ms;
+  animation: jump 500ms;
 }
 #block {
-	width: 50px;
-	height: 30px;
-	background: url(../img/blocks/mouse.png) no-repeat top;
-	position: absolute;
-	top: 193px;
-	left: 550px;
+  width: 50px;
+  height: 30px;
+  background: url(../img/blocks/mouse.png) no-repeat top;
+  position: absolute;
+  top: 193px;
+  left: 550px;
 }
 #flying-block {
-	width: 50px;
-	height: 42px;
-	background: url(../img/blocks/flying-mouse.png) no-repeat top;
-	position: absolute;
-	top: 78px;
-	left: 600px;
+  width: 50px;
+  height: 42px;
+  background: url(../img/blocks/flying-mouse.png) no-repeat top;
+  position: absolute;
+  top: 78px;
+  left: 600px;
 }
 #fat-block {
-	width: 61px;
-	height: 50px;
-	background: url(../img/blocks/fat-mouse.png) no-repeat top;
-	position: absolute;
-	top: 183px;
-	left: 600px;
+  width: 61px;
+  height: 50px;
+  background: url(../img/blocks/fat-mouse.png) no-repeat top;
+  position: absolute;
+  top: 183px;
+  left: 600px;
 }
 #gun {
-	width: 32px;
-	height: 21px;
-	position: relative;
-	top: 71px;
-	left: 32px;
-	background: url(../img/handgun.png) no-repeat top;
-	opacity: 0;
+  width: 32px;
+  height: 21px;
+  position: relative;
+  top: 71px;
+  left: 32px;
+  background: url(../img/handgun.png) no-repeat top;
+  opacity: 0;
 }
 #gunfire {
-	width: 23px;
-	height: 10px;
-	position: relative;
-	top: 50px;
-	left: 56px;
-	background: url(../img/gunfire.png) no-repeat top;
-	opacity: 0;
+  width: 23px;
+  height: 10px;
+  position: relative;
+  top: 50px;
+  left: 56px;
+  background: url(../img/gunfire.png) no-repeat top;
+  opacity: 0;
 }
 .start {
-	animation: block .9s infinite linear;
+  animation: block 0.9s infinite linear;
 }
 .flying-start {
-	animation: flyingBlock 2s 3s infinite linear;
+  animation: flyingBlock 2s 3s infinite linear;
 }
 .flying-block-dead {
-	animation: flyingBlockDead .5s 1 linear forwards;
+  animation: flyingBlockDead 0.5s 1 linear forwards;
 }
 .fat-start {
-	animation: fatBlock 4s 3.5s infinite linear;
+  animation: fatBlock 4s 3.5s infinite linear;
 }
 .fat-block-dead {
-	animation: fatBlockDead .2s 1 linear forwards;
+  animation: fatBlockDead 0.2s 1 linear forwards;
 }
 @keyframes jump {
-	0% {top: 118px;}
-	30% {top: 58px;}
-	70% {top: 58px;}
-	100% {top: 118px;}
+  0% {
+    top: 118px;
+  }
+  30% {
+    top: 58px;
+  }
+  70% {
+    top: 58px;
+  }
+  100% {
+    top: 118px;
+  }
 }
 @keyframes block {
-	0% {left:550px;}
-	100% {left: -50px;}
+  0% {
+    left: 550px;
+  }
+  100% {
+    left: -50px;
+  }
 }
 @keyframes flyingBlock {
-	0% {left: 600px;}
-	100% {left: -50px;}
+  0% {
+    left: 600px;
+  }
+  100% {
+    left: -50px;
+  }
 }
 @keyframes fatBlock {
-	0% {left:600px;}
-	100% {left: -50px;}
+  0% {
+    left: 600px;
+  }
+  100% {
+    left: -50px;
+  }
 }
 @keyframes flyingBlockDead {
-	0% {top: 78px;}
-	100% {top: 300px;}
+  0% {
+    top: 78px;
+  }
+  100% {
+    top: 300px;
+  }
 }
 @keyframes fatBlockDead {
-	0% {transform: none;}
-	100% {transform: rotate(180deg);}
+  0% {
+    transform: none;
+  }
+  100% {
+    transform: rotate(180deg);
+  }
 }
 
 /* score system */
 .score {
-	color: white;
-    font-size: 18px;
-    position: absolute;
-    top: -30px;
-    right: 275px;
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  top: -30px;
+  right: 275px;
 }
 .highscore {
-	color: white;
-    font-size: 18px;
-    position: absolute;
-    top: -30px;
-    left: 275px;
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  top: -30px;
+  left: 275px;
 }
 
 /* light */
 #light {
-	opacity: 0;
-	width: 460px;
-	height: 235px;
-	position: absolute;
-	top: 0px;
-	left: 80px;
-	transition: .3s;
+  opacity: 0;
+  width: 460px;
+  height: 235px;
+  position: absolute;
+  top: 0px;
+  left: 80px;
+  transition: 0.3s;
 }
 
 /* choose character */
 .card {
-	background: #081130;
-	color: white;
+  background: #081130;
+  color: white;
 }
 .card:before {
-	content: '';
-	position: absolute;
-	top: -2px;
-	left: -2px;
-	right: -2px;
-	bottom: -2px;
-	background: #fff;
-	z-index: -1;
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #fff;
+  z-index: -1;
 }
 .card:after {
-	content: '';
-	position: absolute;
-	top: -2px;
-	left: -2px;
-	right: -2px;
-	bottom: -2px;
-	background: #fff;
-	z-index: -2;
-	filter: blur(5px);
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #fff;
+  z-index: -2;
+  filter: blur(5px);
 }
-.card:before, .card:after {
-	background: linear-gradient(190deg, #00b530, #081130, #00b530);
+.card:before,
+.card:after {
+  background: linear-gradient(190deg, #00b530, #081130, #00b530);
 }
 .char-suit {
-	float: left;
-	margin: 5px;
-	cursor: pointer;
-	transition: .1s;
+  float: left;
+  margin: 5px;
+  cursor: pointer;
+  transition: 0.1s;
 }
 .char-suit:hover {
-	color: #00b530;
+  color: #00b530;
 }
 .active {
-	color: #00b530;
+  color: #00b530;
 }
 
 /* mute */
-.muteButton, .startButton {
-	min-width: 90px;
-	margin-left: 10px;
-	color: white;
-	background: #081130;
-	box-shadow: 1px 1px 0 white, -1px -1px 0 white;
-	cursor: pointer;
-	transition: .3s;
-	font-weight: bold;
+.muteButton,
+.startButton {
+  min-width: 90px;
+  margin-left: 10px;
+  color: white;
+  background: #081130;
+  box-shadow: 1px 1px 0 white, -1px -1px 0 white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
 }
-.muteButton:hover, .startButton::hover {
-	color: #081130;
-	background-color: white;
+.muteButton:hover,
+.startButton::hover {
+  color: #081130;
+  background-color: white;
 }
 .muteButton {
-	text-decoration-color: red;
-	text-decoration-style: wavy;
+  text-decoration-color: red;
+  text-decoration-style: wavy;
 }
 button a {
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 button a:hover {
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 /* reload */
 .progress-row {
-	margin-top: 5px;
-	margin-left: -10px;
+  margin-top: 5px;
+  margin-left: -10px;
 }
 .progress {
-	height: 15px;
-	border: 1px solid #081130;
+  height: 15px;
+  border: 1px solid #081130;
 }
 .reload {
-	animation: reload 1.2s 1 linear forwards;
+  animation: reload 1.2s 1 linear forwards;
 }
 @keyframes reload {
-	0% {width: 100%;}
-	25% {width: 0%;}
-	100% {width: 100%;}
+  0% {
+    width: 100%;
+  }
+  25% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 /* about */
 .about .here {
-	color: #00b530;
+  color: #00b530;
 }

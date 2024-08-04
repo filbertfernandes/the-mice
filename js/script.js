@@ -43,20 +43,20 @@ const fatBlock = document.getElementById('fat-block');
 	})
 
 	// 3. light
-	$(window).keyup(function(event) {
-		if( event.which == 17 ) {
-			light.style.opacity = '.5';
-			setTimeout(function() {
-				light.style.opacity = '0';
-			}, 1500)
-		}
-	})
+	// $(window).keyup(function(event) {
+	// 	if( event.which == 17 ) {
+	// 		light.style.opacity = '.5';
+	// 		setTimeout(function() {
+	// 			light.style.opacity = '0';
+	// 		}, 1500)
+	// 	}
+	// })
 
 	// 3. gun
 	$(window).keyup(function(event) {
 		let flyingBlockLeft = parseInt(window.getComputedStyle(flyingBlock).getPropertyValue("left"));
 		let fatBlockLeft = parseInt(window.getComputedStyle(fatBlock).getPropertyValue("left"))
-		if( event.which == 88 ) {
+		if( event.which == 87 ) {
 			if( character.classList.contains('animate') || progressBar.classList.contains('reload') ) {
 				return;
 			} else {
@@ -129,8 +129,8 @@ const fatBlock = document.getElementById('fat-block');
 	let scoreNum = 0;
 	let highscore = document.querySelector('.highscore span');
 	let scoreSystem = setInterval(function() {
-			score.innerHTML = scoreNum++;
-		},100)
+		score.innerHTML = scoreNum++;
+	},100)
 
 
 // check dead
@@ -190,15 +190,15 @@ const fatBlock = document.getElementById('fat-block');
 	
 
 // change background within a certain time 
-	let time1 = Math.floor(Math.random() *10000) +8000;
-	let time2 = Math.floor(Math.random() *20000) +8000;
+	// let time1 = Math.floor(Math.random() *10000) +8000;
+	// let time2 = Math.floor(Math.random() *20000) +8000;
 
-	setInterval(function() {
-		game.style.backgroundColor = 'black';
-	}, time1);
-	setInterval(function() {
-		game.style.backgroundColor = 'white';
-	}, time2);
+	// setInterval(function() {
+	// 	game.style.backgroundColor = 'black';
+	// }, time1);
+	// setInterval(function() {
+	// 	game.style.backgroundColor = 'white';
+	// }, time2);
 
 
 // choose character
